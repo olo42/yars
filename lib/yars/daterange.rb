@@ -1,17 +1,16 @@
 class DateRange
 
-  def self.getDates(startDate, endDate, weekday=nil)
-    dates = Array.new
+  def initialize(startDate, endDate)
+    @start = startDate
+    @end = endDate
+  end 
 
-    (startDate..endDate).each do |date|
-      if(!weekday.nil? && date.wday != weekday)
-        next
-      else
-        dates.push(date)
-      end
-    end
+  def Dates()
+    return @start..@end
+  end
 
-    return dates
+  def Weekdays(weekday)
+    return Dates().find_all { |date|  date.wday == weekday }
   end
   
 end
